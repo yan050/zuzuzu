@@ -30,18 +30,18 @@ module.exports = {
       let emx = new MessageEmbed()
         .setAuthor(`⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝`)
         .setDescription(`
-${emoji.biru} | **Ethereal Bot Command**
+${emoji.biru} | **Tamako Kitashirakawa Command**
 **⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝**
-${emoji.biru} ‣ **Gunakan e!help <command> Untuk Melihat Info Dari Command Tersebut**
-${emoji.biru} ‣ **Prefix Dari Bot : e!**
-${emoji.biru} ‣ **Bot Dibuat Oleh Eza And Iyann**
+${emoji.kado} ‣ **Gunakan t.help <command> Untuk Melihat Info Dari Command Tersebut**
+${emoji.biru} ‣ **Prefix Dari Bot : t.**
+${emoji.biru} ‣ **Bot Dibuat Oleh Iyann**
 **⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝**`)
         .setColor("BLUE")
         .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL())
         .addFields(
-            {name: `${emoji.lord} ‣ **Moderation**`, value: '**``Ban``** |'},
-            {name: `${emoji.guling2} ‣ **Fun**`, value: '**``Triggerd``** | **``Ascii``**'},
+            {name: `${emoji.kupukupu} ‣ **Moderation**`, value: '**``Ban``** |'},
+            {name: `${emoji.kannadance} ‣ **Fun**`, value: '**``Triggerd``** | **``Ascii``**'},
             {name: `${emoji.lord} ‣ **Info**`, value: '**``Help``** | **``Botinfo``**'},
             {name: `${emoji.guling2} ‣ **Roleplay**`, value: '**``Slap``** | **``Kiss``**'},
             {name: `${emoji.lord} ‣ **Image**`, value: '**``Neko``** |'},

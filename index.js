@@ -40,8 +40,8 @@ client.aliases = new discord.Collection();
 client.on("ready", () => {
   console.log(`Aku Sudah Siap Dipakai!`);
   let statuses = [
-    `TDW | ${client.users.cache.size} Member`,
-    `r!help | ${client.users.cache.size} Member`,
+    `ShiroSekai | ${client.users.cache.size} Member`,
+    `t.help | ${client.users.cache.size} Member`,
     `#StayAtHome | ${client.users.cache.size} Member`
   ]; //Your Status's
   setInterval(function() {
