@@ -75,9 +75,9 @@ run: (client, message, args) =>{
         .setThumbnail(member.user.displayAvatarURL)
         .setTimestamp()
         .addField(`Status`,`${status[member.user.presence.status]}`, true)
-        .addField('Joined at: ',`${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
-        .addField("Created at: ",`${moment(message.author.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
-        .addField("Permissions: ", `${permissions.join(', ')}`, true)
+        .addField(`Masuk Pada Tanggal :`,`${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
+        .addField(`Akun Dibuat Pada Tanggal :`,`${moment(message.author.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
+        .addField(`Permission`, `${permissions.join(', ')}`, true)
         .addField(`Roles [${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).length}]`,`${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id }>`).join(" **|** ") || "No Roles"}`, true)
         .addField("Acknowledgements: ", `${acknowledgements}`, true);
         
