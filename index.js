@@ -40,8 +40,8 @@ client.aliases = new discord.Collection();
 client.on("ready", () => {
   console.log(`Aku Sudah Siap Dipakai!`);
   let statuses = [
-    `ShiroSekai | ${client.users.cache.size} Member`,
-    `t.help | ${client.users.cache.size} Member`,
+    `TDW | ${client.users.cache.size} Member`,
+    `r!help | ${client.users.cache.size} Member`,
     `#StayAtHome | ${client.users.cache.size} Member`
   ]; //Your Status's
   setInterval(function() {
@@ -65,6 +65,30 @@ function is_url(str) {
 }
 
 //_______________________________________________________________________________
+
+client.on("message", async message => {
+  if (message.author.bot) return;
+  if (!message.member.hasPermission("ADMINISTRATOR")) {
+    if (is_url(message.content) === false) {
+    }
+
+    //_______________________________________________________________________________
+
+    let confirm = false;
+    var i;
+    for (i = 0; i < badwords.length; i++) {
+      if (message.content.toLowerCase().includes(badwords[i].toLowerCase()))
+        confirm = true;
+    }
+
+    if (confirm) {
+      message.delete();
+      return message.channel.send(
+        `${emoji.peripied} | Badword Terdeteksi!! Menghapus Pesan..`
+      );
+    }
+  }
+
   //_______________________________________________________________________________
 
   if (!message.guild) return;
