@@ -65,30 +65,6 @@ function is_url(str) {
 }
 
 //_______________________________________________________________________________
-
-client.on("message", async message => {
-  if (message.author.bot) return;
-  if (!message.member.hasPermission("ADMINISTRATOR")) {
-    if (is_url(message.content) === false) {
-    }
-
-    //_______________________________________________________________________________
-
-    let confirm = false;
-    var i;
-    for (i = 0; i < badwords.length; i++) {
-      if (message.content.toLowerCase().includes(badwords[i].toLowerCase()))
-        confirm = true;
-    }
-
-    if (confirm) {
-      message.delete();
-      return message.channel.send(
-        `${emoji.peripied} | Badword Terdeteksi!! Menghapus Pesan..`
-      );
-    }
-  }
-
   //_______________________________________________________________________________
 
   if (!message.guild) return;
