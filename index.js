@@ -69,7 +69,7 @@ function is_url(str) {
 client.on("message", async message => {
   if (message.author.bot) return;
   if (!message.member.hasPermission("ADMINISTRATOR")) {
-    if (is_url(message.content) === true) {
+    if (is_url(message.content) === false) {
     }
 
     //_______________________________________________________________________________
@@ -84,7 +84,7 @@ client.on("message", async message => {
     if (confirm) {
       message.delete();
       return message.channel.send(
-        `${emoji.peripied} | Badword Terdeteksi!! Menghapus Pesan..`
+        `${emoji.guling2} | Badword Terdeteksi!! Menghapus Pesan..`
       );
     }
   }
