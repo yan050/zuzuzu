@@ -1,23 +1,28 @@
-const discord = require("discord.js");
+const Discord = require("discord.js");
+const db = require("quick.db")
+const {
+    MessageEmbed,
+    WebhookClient,
+    Util,
+    Collection
+} = require("discord.js");
 
 module.exports = {
-  name: "ping",
-  description: "Ping",
-  category: "info",
-  run: (client, message, args) => {
-    let start = Date.now();
-
-    message.channel
-      .send({ embed: { description: "Pinging...", color: "RANDOM" } })
-      .then(m => {
-        let end = Date.now();
-
-        let embed = new discord.MessageEmbed()
-          .setAuthor("Ping!", message.author.avatarURL())
-          .addField("API Latency", Math.round(client.ws.ping) + "ms", true)
-          .addField("Message Latency", end - start + "ms", true)
-          .setColor("RANDOM");
-        m.edit(embed).catch(e => message.channel.send(e));
-      });
-  }
-};
+    name: "ping",
+    aliases: ['botping'],
+    description: "Test the bots ping!",
+    usage: "[p]ping",
+    category: "Info Commands",
+    run: async(bot, message, args) =>{
+        const prefix = bot.db.get(`prefix_${message.guild.id}`) || process.env.PREFIX;
+        console.log(this.name + " was used");
+       let m = await  message.channel.send({ embed: { description: "pinging"}});
+       const _ = new MessageEmbed()
+            .setTitle(`Fetched!`)
+            .setDescription(`**Pong!**\n\nBot Ping is \`${bot.ws.ping}ms\`\nApi Latency \`${m.createdTimestamp - message.createdTimestamp}ms\``)
+            .setColor("RANDOM")
+            .setFooter(`Shard ${message.guild.shardID}/${bot.ws.shards.size}`)
+        await m.edit(_)
+        m.edit("\u200B")
+    }
+}
