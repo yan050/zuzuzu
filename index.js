@@ -40,9 +40,9 @@ client.aliases = new discord.Collection();
 client.on("ready", () => {
   console.log(`Aku Sudah Siap Dipakai!`);
   let statuses = [
-    `Tamako!! | ${client.users.cache.size} Member`,
-    `t.help | ${client.users.cache.size} Member`,
-    `#StayAtHome | ${client.users.cache.size} Member`
+    `Tamako!! | ${client.users.cache.size} User!!`,
+    `t.help | ${client.users.cache.size} User!!`,
+    `#StayAtHome | ${client.users.cache.size} User!!`
   ]; //Your Status's
   setInterval(function() {
     let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
@@ -69,7 +69,7 @@ function is_url(str) {
 client.on("message", async message => {
   if (message.author.bot) return;
   if (!message.member.hasPermission("ADMINISTRATOR")) {
-    if (is_url(message.content) === false) {
+    if (is_url(message.content) === true) {
     }
 
     //_______________________________________________________________________________
