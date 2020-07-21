@@ -11,10 +11,8 @@ module.exports = {
 
       const embed = new MessageEmbed()
         .setColor(`${Color}`)
-        .setFooter(
-          `Tamako`,
-          bot.user.
-        )
+        .setFooter(`Tamako`, client.user.displayAvatarURL())
+        
         .setTitle(`**Jawabannya Adalah**`)
         .setDescription(math.evaluate(args.join(" ")))
         .setTimestamp();
