@@ -1,69 +1,49 @@
-const axios = require('axios');
-const { MessageEmbed } = require('discord.js')
+const Discord = require('discord.js');
+
+const { NovelCovid } = require('novelcovid');
+
+const track = new NovelCovid()
 
 module.exports = {
-    name: "corona",
-    category: "info",
-    description: "Melihat Informasi Dari Corona",
-    run: async (client, message, args) => {
-        const baseUrl = "https://corona.lmao.ninja/v2";
 
-        let url, response, corona;
+    name: "country",
 
-        try {
-            url = args[0] ? `${baseUrl}/countries/${args[0]}`:`${baseUrl}/all`
-            response = await axios.get(url)
-            corona = response.data
-        } catch (error) {
-            return message.channel.send(`***${args[0]}*** doesn't exist, or data isn't being collected`)
-        }
+    description: "Track a country's COVID-19 cases",
 
-        const embed = new MessageEmbed()
-            .setTitle(args[0] ? `${args[0].toUpperCase()} Stats` : 'Total Corona Cases World Wide')
-            .setColor('#fb644c')
-            .setThumbnail(args[0] ? corona.countryInfo.flag : 'https://i.giphy.com/YPbrUhP9Ryhgi2psz3.gif')
-            .addFields(
-                {
-                    name: 'Total Cases:',
-                    value: corona.cases.toLocaleString(),
-                    inline: true
-                },
-                {
-                    name: 'Total Deaths:',
-                    value: corona.deaths.toLocaleString(),
-                    inline: true
-                },
-                {
-                    name: 'Total Recovered:',
-                    value: corona.recovered.toLocaleString(),
-                    inline: true
-                },
-                {
-                    name: 'Active Cases:',
-                    value: corona.active.toLocaleString(),
-                    inline: true
-                },
-                {
-                    name: '\u200b',
-                    value: '\u200b',
-                    inline: false
-                },
-                {
-                    name: 'Critical Cases:',
-                    value: corona.critical.toLocaleString(),
-                    inline: true
-                },
-                {
-                    name: 'Today Recoveries:',
-                    value: corona.todayRecovered.toLocaleString().replace("-", ""),
-                    inline: true
-                },
-                {
-                    name: 'Todays Deaths:',
-                    value: corona.todayDeaths.toLocaleString(),
-                    inline: true
-                })
+    async run (client, message, args) {
 
-        await message.channel.send(embed)
+        const nothing = new Discord.MessageEmbed()
+
+        .setTitle('No args :(')
+
+        const corona = await track.countries(args.join(" "));
+
+        if(!args[0]) return message.channel.send(nothing);
+
+        const embed = new Discord.MessageEmbed()
+
+        .setTitle(`${corona.country}`)
+
+        .setDescription(`Info on COVID-19 in ${corona.country}`)
+
+        .addField('Total Confirmed', corona.cases, true)
+
+        .addField('Total Deaths', corona.deaths, true)
+
+        .addField('Total Recovered', corona.recovered, true)
+
+        .addField('Today\'s cases', corona.todayCases, true)
+
+        .addField('Today\'s deaths', corona.todayDeaths, true)
+
+        .addField('Active cases', corona.active, true)
+
+        .addField('Critical cases', corona.critical, true)
+
+        .setFooter(`Thanks for using ${client.user.username}`, client.user.displayAvatarURL())
+
+        message.channel.send(embed);
+
     }
-};
+
+}
