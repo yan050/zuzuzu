@@ -19,27 +19,27 @@ module.exports = {
         }
 
         const embed = new MessageEmbed()
-            .setTitle(args[0] ? `${args[0].toUpperCase()} Stats` : 'Total Corona Cases World Wide')
+            .setTitle(args[0] ? `${args[0].toUpperCase()}`: 'Kasus Corona Di Dunia')
             .setColor('#fb644c')
             .setThumbnail(args[0] ? corona.countryInfo.flag : 'https://i.giphy.com/YPbrUhP9Ryhgi2psz3.gif')
             .addFields(
                 {
-                    name: 'Total Cases:',
+                    name: 'Total Kasus :',
                     value: corona.cases.toLocaleString(),
                     inline: true
                 },
                 {
-                    name: 'Total Deaths:',
+                    name: 'Total Kematian :',
                     value: corona.deaths.toLocaleString(),
                     inline: true
                 },
                 {
-                    name: 'Total Recovered:',
+                    name: 'Total Yang Disembuhkan ;',
                     value: corona.recovered.toLocaleString(),
                     inline: true
                 },
                 {
-                    name: 'Active Cases:',
+                    name: 'Kasus Aktif',
                     value: corona.active.toLocaleString(),
                     inline: true
                 },
@@ -49,17 +49,17 @@ module.exports = {
                     inline: false
                 },
                 {
-                    name: 'Critical Cases:',
+                    name: 'Kritis',
                     value: corona.critical.toLocaleString(),
                     inline: true
                 },
                 {
-                    name: 'Today Recoveries:',
+                    name: 'Yang Sudah Disembuhkan Hari Ini :',
                     value: corona.todayRecovered.toLocaleString().replace("-", ""),
                     inline: true
                 },
                 {
-                    name: 'Todays Deaths:',
+                    name: 'Yang Mati Hari Ini :',
                     value: corona.todayDeaths.toLocaleString(),
                     inline: true
                 })
