@@ -40,9 +40,9 @@ client.aliases = new discord.Collection();
 client.on("ready", () => {
   console.log(`Aku Sudah Siap Dipakai!`);
   let statuses = [
-    `TDW | ${client.users.cache.size} Member`,
-    `r!help | ${client.users.cache.size} Member`,
-    `#StayAtHome | ${client.users.cache.size} Member`
+    `Tamako!! | ${client.users.cache.size} User`,
+    `t.help | ${client.users.cache.size} User`,
+    `#StayAtHome | ${client.users.cache.size} User`
   ]; //Your Status's
   setInterval(function() {
     let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
@@ -84,7 +84,7 @@ client.on("message", async message => {
     if (confirm) {
       message.delete();
       return message.channel.send(
-        `${emoji.peripied} | Badword Terdeteksi!! Menghapus Pesan..`
+        `${emoji.guling2} | Badword Terdeteksi!! Menghapus Pesan..`
       );
     }
   }
