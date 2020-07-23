@@ -1,109 +1,69 @@
-const discord = require("discord.js")
-
-const { NovelCovid } = require("novelcovid");
-
-const track = new NovelCovid();
+const axios = require('axios');
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
+    name: "corona",
+    category: "info",
+    description: "Melihat Informasi Dari Corona",
+    run: async (client, message, args) => {
+        const baseUrl = "https://corona.lmao.ninja/v2";
 
-  name: "corona",
+        let url, response, corona;
 
-  category: "info",
+        try {
+            url = args[0] ? `${baseUrl}/countries/${args[0]}`:`${baseUrl}/all`
+            response = await axios.get(url)
+            corona = response.data
+        } catch (error) {
+            return message.channel.send(`***${args[0]}*** doesn't exist, or data isn't being collected`)
+        }
 
-  description: "Get the stats of corona",
+        const embed = new MessageEmbed()
+            .setTitle(args[0] ? `${args[0].toUpperCase()} Stats` : 'Total Corona Cases World Wide')
+            .setColor('#fb644c')
+            .setThumbnail(args[0] ? corona.countryInfo.flag : 'https://i.giphy.com/YPbrUhP9Ryhgi2psz3.gif')
+            .addFields(
+                {
+                    name: 'Total Cases:',
+                    value: corona.cases.toLocaleString(),
+                    inline: true
+                },
+                {
+                    name: 'Total Deaths:',
+                    value: corona.deaths.toLocaleString(),
+                    inline: true
+                },
+                {
+                    name: 'Total Recovered:',
+                    value: corona.recovered.toLocaleString(),
+                    inline: true
+                },
+                {
+                    name: 'Active Cases:',
+                    value: corona.active.toLocaleString(),
+                    inline: true
+                },
+                {
+                    name: '\u200b',
+                    value: '\u200b',
+                    inline: false
+                },
+                {
+                    name: 'Critical Cases:',
+                    value: corona.critical.toLocaleString(),
+                    inline: true
+                },
+                {
+                    name: 'Today Recoveries:',
+                    value: corona.todayRecovered.toLocaleString().replace("-", ""),
+                    inline: true
+                },
+                {
+                    name: 'Todays Deaths:',
+                    value: corona.todayDeaths.toLocaleString(),
+                    inline: true
+                })
 
-  usage: "corona all or corona <country>",
-
-  aliases: ["covid", "covid19"],
-
-  run: async (client, message, args) => {
-
-    
-
-    if(!args.length) {
-
-      return message.channel.send("Please give the name of country")
-
+        await message.channel.send(embed)
     }
-
-    
-
-    if(args.join(" ") === "all") {
-
-      let corona = await track.all() //it will give global cases
-
-      
-
-      let embed = new discord.MessageEmbed()
-
-      .setTitle("Global Cases")
-
-      .setColor("#ff2050")
-
-      .setDescription("Sometimes cases number may differ from small amount.")
-
-      .addField("Total Cases", corona.cases, true)
-
-      .addField("Total Deaths", corona.deaths, true)
-
-      .addField("Total Recovered", corona.recovered, true)
-
-      .addField("Today's Cases", corona.todayCases, true)
-
-      .addField("Today's Deaths", corona.todayDeaths, true)
-
-      .addField("Active Cases", corona.active, true);
-
-      
-
-      return message.channel.send(embed)
-
-      
-
-      
-
-      
-
-    } else {
-
-      let corona = await track.countries(args.join(" ")) //change it to countries
-
-      
-
-      let embed = new discord.MessageEmbed()
-
-      .setTitle(`${corona.country}`)
-
-      .setColor("#ff2050")
-
-      .setDescription("Sometimes cases number may differ from small amount.")
-
-      .addField("Total Cases", corona.cases, true)
-
-      .addField("Total Deaths", corona.deaths, true)
-
-      .addField("Total Recovered", corona.recovered, true)
-
-      .addField("Today's Cases", corona.todayCases, true)
-
-      .addField("Today's Deaths", corona.todayDeaths, true)
-
-      .addField("Active Cases", corona.active, true);
-
-      
-
-      return message.channel.send(embed)
-
-      
-
-      
-
-    }
-
-    
-
-    
-
-  }
-
-}
+};
