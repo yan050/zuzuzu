@@ -41,7 +41,7 @@ ${emoji.kado} ‣ **Bot Dibuat Oleh Iyann**
         .setThumbnail(client.user.displayAvatarURL())
         .addFields(
             {name: `${emoji.guling2} ‣ **Moderation**`, value: 'Ban ‡ Kick'},
-            {name: `${emoji.kannadance} ‣ **Fun**`, value:'**``Triggerd``** **┊** **``Clyde``** **┊** **``8ball``** **┊** **``Ascii``** **┊** **``Emojify``**'},
+            {name: `${emoji.kannadance} ‣ **Fun**`, value:'**``Triggerd``** **│** **``Clyde``** **│** **``8ball``** **│** **``Ascii``** **│** **``Emojify``**'},
             {name: `${emoji.guling2} ‣ **Info**`, value: '**``Help``** | **``Botinfo``**'},
             {name: `${emoji.kannadance} ‣ **Roleplay**`, value: '**``Slap``** | **``Kiss``**'},
             {name: `${emoji.guling2} ‣ **Image**`, value: '**``Neko``** |'},
