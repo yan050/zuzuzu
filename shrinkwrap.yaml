@@ -11,7 +11,7 @@ dependencies:
   google-tts-api: 0.0.4
   got: 11.5.1
   http: 0.0.0
-  imageapi.js: 1.0.5
+  imageapi.js: 1.0.7
   imdb-api: 4.1.1
   mathjs: 7.1.0
   moment: 2.27.0
@@ -1328,12 +1328,12 @@ packages:
       node: '>=0.9.0'
     resolution:
       integrity: sha1-/IQJlmRGC5DKhi2TALa/u7+/gFY=
-  /imageapi.js/1.0.5:
+  /imageapi.js/1.0.7:
     dependencies:
       node-fetch: 2.6.0
     dev: false
     resolution:
-      integrity: sha512-jEnjfcHRztx+N4ug29TFmslXo7TZ50Q6mmfN1QTtC/Xtxmp3/eeJXM7imR0S1KrI+Yk5q1u1o9+JUk2oTabmXQ==
+      integrity: sha512-mvkqqsr95WYNcaAS7xY2zXHcpfcAmqnS2FYdAUro8nPl+Ru38co8YZOIur9/2sgA4TFBzvL/FOtnb/8OMfhc+g==
   /imdb-api/4.1.1:
     dependencies:
       '@types/request': 2.48.5
@@ -2589,7 +2589,7 @@ specifiers:
   google-tts-api: ^0.0.4
   got: ^11.5.1
   http: ^0.0.0
-  imageapi.js: ^1.0.5
+  imageapi.js: ^1.0.7
   imdb-api: ^4.0.3
   mathjs: ^7.1.0
   moment: ^2.27.0

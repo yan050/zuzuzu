@@ -21,7 +21,7 @@
     "node-fetch": "^2.6.0",
     "google-tts-api": "^0.0.4",
     "http": "^0.0.0",
-    "imageapi.js": "^1.0.5",
+    "imageapi.js": "^1.0.7",
     "axios": "^0.19.2",
     "moment-duration-format": "^2.2.2",
     "moment": "^2.27.0",
