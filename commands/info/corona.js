@@ -10,7 +10,7 @@ module.exports = {
 
     description: "Track a country's COVID-19 cases",
 
-    async run (client, message, args) {
+    run: async (client, message, args) => {
 
         const nothing = new Discord.MessageEmbed()
 
