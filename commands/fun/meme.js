@@ -4,7 +4,8 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: "meme",
     description: "Mendapatkan Random Meme!!",
-    category: "fun",
+    category: "Fun",
+    usage: "meme",
     run: async (client, message, args) => {
         const url = 'https://some-random-api.ml/meme';
 
@@ -13,7 +14,7 @@ module.exports = {
             response = await axios.get(url);
             data = response.data;
         } catch (e) {
-            return message.channel.send(`An error has occured, try again!`)
+            return message.channel.send(`**Error 404 :v | Coba Lagi Bang!!**`)
         }
 
         const embed = new MessageEmbed()
