@@ -2,30 +2,30 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
-  name: "pat",
-  category: "roleplay",
-  description: "Tau Lah Ya",
-  aliases: [""],
+  name: "slap",
+  description: "Slap People",
+  category: "interaction",
+  aliases: ["tampar", "tabok"],
   run: async (bot, message, args) => {
     if (!message.mentions.users.first())
-      return message.channel.send("Mau Menepuk Siapa Nih? :3");
+      return message.channel.send("Please mention a user to be slapped!");
 
-    fetch("https://nekos.life/api/v2/img/pat")
+    fetch("https://nekos.life/api/v2/img/slap")
       .then(res => res.json())
       .then(body => {
         if (!body)
-          return message.channel.send("Whoops! I've broke, try again!");
+          return message.channel.send("**Aduh Kok Gk Bisa Ya? Coba Ulangin**");
 
         let embed = new Discord.MessageEmbed()
-          .setAuthor(`Pat`)
+          .setAuthor(`Slap!`)
           .setTitle(
-            `${message.author.username} Menepuk ${
+            `${message.author.username} slapped ${
               message.mentions.users.first().username
-            }. UmU`
+            }. Sakit? Enak!`
           )
           .setImage(body.url)
           .setFooter(
-            bot.user,
+            bot.user.username.toLowerCase(),
             bot.user.displayAvatarURL()
           );
 

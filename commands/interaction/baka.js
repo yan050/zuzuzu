@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
   name: "baka",
-  category: "roleplay",
+  category: "interaction",
   description: "Kalo Ada Yang Bodo Pake Aja Ni Command",
   aliases: ["bodo"],
   run: async (bot, message, args) => {

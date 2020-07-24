@@ -77,7 +77,6 @@ run: (client, message, args) =>{
         .addField(`Status`,`${status[member.user.presence.status]}`, true)
         .addField(`Masuk Pada Tanggal :`,`${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
         .addField(`Akun Dibuat Pada Tanggal :`,`${moment(message.author.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
-        .addField(`Permission`, `${permissions.join(', ')}`, true)
         .addField(`Roles [${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).length}]`,`${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id }>`).join(" **|** ") || "No Roles"}`, true)
         .addField("Acknowledgements: ", `${acknowledgements}`, true);
         

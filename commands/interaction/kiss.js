@@ -2,30 +2,30 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
-  name: "hug",
-  category: "roleplay",
-  description: "memeluk seseorang",
-  aliases: ["peluk", "meluk"],
+  name: "kiss",
+  category: "interaction",
+  description: "Mencium Seseorang",
+  aliases: ["cium"],
   run: async (bot, message, args) => {
     if (!message.mentions.users.first())
-      return message.channel.send("Mau Meluk Siapa Nihh :3");
+      return message.channel.send("Mau Cium Siapa Nihh :3");
 
-    fetch("https://nekos.life/api/v2/img/hug")
+    fetch("https://nekos.life/api/v2/img/kiss")
       .then(res => res.json())
       .then(body => {
         if (!body)
           return message.channel.send("Whoops! I've broke, try again!");
 
         let embed = new Discord.MessageEmbed()
-          .setAuthor(`Acieee`)
+          .setAuthor(``)
           .setTitle(
-            `${bot.user.username} Memeluk ${
+            `${message.author.username} Mencium ${
               message.mentions.users.first().username
-            }. Jangan Keras Keras Pak!`
+            }. Anjayyy Brani Euyy!`
           )
           .setImage(body.url)
           .setFooter(
-            bot.user.username.toUpperCase(),
+            bot.user,
             bot.user.displayAvatarURL()
           );
 
