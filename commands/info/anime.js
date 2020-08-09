@@ -5,7 +5,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
 name: "anime",
   category: "info",
-  aliases: ["kitsu"] ,
+  aliases: ["kitsu"],
   description: "Get anime information",
   usage: "anime <anime_name>",
   run: (client, message, args) => {
