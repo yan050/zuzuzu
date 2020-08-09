@@ -9,7 +9,7 @@ module.exports = {
   aliases: ["kucing"],
   run: async (bot, message, args) => {
 
-    fetch("https://nekos.life/api/v2/img/neko")
+        fetch("https://waifu.pics/api/sfw")
       .then(res => res.json())
       .then(body => {
         if (!body)
