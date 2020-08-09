@@ -1,27 +1,27 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const
+
 module.exports = {
-  name: "kiss",
-  category: "interaction",
-  description: "Mencium Seseorang",
-  aliases: ["cium"],
+  name: "waifu",
+  description: "Gratis Neko Bos",
+  category: "image",
+  aliases: ["kucing"],
   run: async (bot, message, args) => {
-    if (!message.mentions.users.first())
-      return message.channel.send("Mau Cium Siapa Nihh :3");
 
     fetch("https://waifu.pics/api/sfw")
       .then(res => res.json())
       .then(body => {
         if (!body)
-          return message.channel.send("Whoops! I've broke, try again!");
+          return message.channel.send("**Aduh Kok Gk Bisa Ya? Coba Ulangin**");
 
         let embed = new Discord.MessageEmbed()
-          .setAuthor(`Random Waifu Image Telah Spawn`)
-          .setDescription(`Just Donload It`)
+          .setAuthor(`Waifu Terspawn`)
+          .setTitle(
+            `*Udah Donlod Aja Udah*`
+          )
           .setImage(body.url)
           .setFooter(
-            bot.user,
+            `Tamako`,
             bot.user.displayAvatarURL()
           );
 
