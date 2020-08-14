@@ -16,7 +16,7 @@ module.exports = {
 
       let embed = new MessageEmbed()
         .setAuthor(command.name, client.user.displayAvatarURL())
-        .addField(`${emoji.party}  Description`, command.description || "Not Provided :(")
+        .addField(`${emoji.party} Description`, command.description || "Not Provided :(")
         .addField(`${emoji.party} Usage`, "`" + command.usage + "`" || "Not Provied")
         .addField(`${emoji.party} Category`, command.category  || "Not Provided")
         .setThumbnail(client.user.displayAvatarURL())
@@ -37,12 +37,12 @@ ${emoji.kado} ‣ **Prefix Dari Bot : t.**
 ${emoji.kado} ‣ **Bot Dibuat Oleh Iyann**
 **⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝**`)
         .setColor("BLUE")
-        .setFooter(client.user.username, client.user.displayAvatarURL())
+        .setFooter(`Requested By : $(client` client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL())
         .addFields(
             {name: `${emoji.guling2} ‣ **Moderation**`, value: 'Ban ‡ Kick'},
-            {name: `${emoji.kannadance} ‣ **Fun**`, value:'**``Triggerd``** **│** **``Clyde``** **│** **``8ball``** **│** **``Ascii``** **│** **``Emojify``**'},
-            {name: `${emoji.guling2} ‣ **Info**`, value: '**``Help``** | **``Botinfo``**'},
+            {name: `${emoji.kannadance} ‣ **Fun**`, value:'**``Triggerd``** **│** **``Clyde``** **│** **``8ball``** **│** **``Ascii``** **│** **``Emojify``** **│** **``Changemymind``** **│** **``Deepfry``** **│** **``Delete``** **│** **``Gay``** **│** **``Rip``** **│** **``Supreme``** **│** **``Trash``** **│** **``Wanted``** **│** **``Math``** '},
+            {name: `${emoji.guling2} ‣ **Info**`, value: '**``Help``** | **``Botinfo``** **│** **``Anime``** **│** **``Avatar``** **│** **``Corona``** **│** **``Imdb``** **│** **``Ping``** **│** **``Serverinfo``** **│** **``Uptime``** **│** **``Userinfo``** '},
             {name: `${emoji.kannadance} ‣ **Roleplay**`, value: '**``Slap``** | **``Kiss``**'},
             {name: `${emoji.guling2} ‣ **Image**`, value: '**``Neko``** |'},
         )
