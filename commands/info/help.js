@@ -36,7 +36,7 @@ ${emoji.kado} ‣ **Gunakan t.help <command> Untuk Melihat Info Dari Command Ter
 ${emoji.kado} ‣ **Prefix Dari Bot : t.**
 ${emoji.kado} ‣ **Total Command : 44**
 **⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝ ͝⏝**`)  
-        .setFooter(`Requested By :`, client.user.username, client.user.displayAvatarURL())
+        .setFooter(client.user.username, client.user.displayAvatarURL())
         .setThumbnail(client.user.displayAvatarURL())
         .addFields(
             {name: `${emoji.guling2} ‣ **Moderation**`, value: 'Ban ‡ Kick'},
