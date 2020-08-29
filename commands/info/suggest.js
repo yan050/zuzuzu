@@ -1,6 +1,5 @@
 const { MessageEmbed } = require("discord.js")
 
-
 module.exports = {
   name: "suggest",
   usage: "suggest <message>",
