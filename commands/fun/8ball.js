@@ -6,6 +6,7 @@ module.exports = {
   name: "8ball",
   description: "Bertanya Kepada 8ball",
   category: "fun",
+  aliases: ["ask"],
 run: async (bot, message, args) => {
     let userArray = message.content.split(" ");
     let userArgs = userArray.slice(1);

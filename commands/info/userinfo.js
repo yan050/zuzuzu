@@ -1,23 +1,13 @@
 const Discord = require("discord.js");
-
 const { MessageEmbed } = require("discord.js");
-
 const { Color } = require("../../config.json");
-
 module.exports = {
-
   name: "userinfo",
-
   aliases: ["memberinfo", "whois"],
-
   category: "utility",
-
   description: "Show User Information!",
-
   usage: "Userinfo | <Mention User>",
-
   accessableby: "everyone",
-
   run: async (client, message, args) => {
 
     //Start
