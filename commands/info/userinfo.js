@@ -1,98 +1,86 @@
-const { MessageEmbed } = require("discord.js")
-const moment = require("moment")
+const Discord = require('discord.js');
+const moment = require("moment");
 
+const status = {
+    online: "Online",
+    idle: "Idle",
+    dnd: "Do Not Disturb",
+    offline: "Offline/Invisible"
+};
 module.exports = {
   name: "userinfo",
-  aliases: ["whois", "user"],
-  usage: "userinfo <MENTION>",
-  description: "Get advance stats of given person or yourself",
-  run: async (client, message, args) => {
-
-
-    let user;
-
-    if (!args[0]) {
-      user = message.member;
-    } else {
-
-
-      if (isNaN(args[0])) return message.channel.send(":x: Invalid ID of the user.")
-
-
-      user = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(err => { return message.channel.send(":x: Unable to find this Person") })
+  description: "Menampilkan Informasi Dari User Tersebut",
+  category: "info",
+  aliases: ["ui"],
+run: (client, message, args) =>{
+    var permissions = [];
+    var acknowledgements = 'None';
+   
+    const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
+    const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); }); 
+    
+    if(message.member.hasPermission("KICK_MEMBERS")){
+        permissions.push("Kick Members");
+    }
+    
+    if(message.member.hasPermission("BAN_MEMBERS")){
+        permissions.push("Ban Members");
+    }
+    
+    if(message.member.hasPermission("ADMINISTRATOR")){
+        permissions.push("Administrator");
     }
 
-    if (!user) {
-      return message.channel.send(":x: Unable to find this person!")
+    if(message.member.hasPermission("MANAGE_MESSAGES")){
+        permissions.push("Manage Messages");
+    }
+    
+    if(message.member.hasPermission("MANAGE_CHANNELS")){
+        permissions.push("Manage Channels");
+    }
+    
+    if(message.member.hasPermission("MENTION_EVERYONE")){
+        permissions.push("Mention Everyone");
     }
 
-
-    let stat = {
-      online: "https://emoji.gg/assets/emoji/9166_online.png",
-      idle: "https://emoji.gg/assets/emoji/3929_idle.png",
-      dnd: "https://emoji.gg/assets/emoji/2531_dnd.png",
-      offline: "https://emoji.gg/assets/emoji/7445_status_offline.png"
+    if(message.member.hasPermission("MANAGE_NICKNAMES")){
+        permissions.push("Manage Nicknames");
     }
 
-    //NOW BADGES
-    let badges = await user.user.flags
-    badges = await badges.toArray();
-
-    let newbadges = [];
-    badges.forEach(m => {
-      newbadges.push(m.replace("_", " "))
-    })
-
-    let embed = new MessageEmbed()
-      .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
-
-    //ACTIVITY
-    let array = []
-    if (user.user.presence.activities.length) {
-
-      let data = user.user.presence.activities;
-
-      for (let i = 0; i < data.length; i++) {
-        let name = data[i].name || "None"
-        let xname = data[i].details || "None"
-        let zname = data[i].state || "None"
-        let type = data[i].type
-
-        array.push(`**${type}** : \`${name} : ${xname} : ${zname}\``)
-
-        if (data[i].name === "Spotify") {
-          embed.setThumbnail(`https://i.scdn.co/image/${data[i].assets.largeImage.replace("spotify:", "")}`)
-        }
-
-        embed.setDescription(array.join("\n"))
-
-      }
+    if(message.member.hasPermission("MANAGE_ROLES")){
+        permissions.push("Manage Roles");
     }
 
-      //EMBED COLOR BASED ON member
-      embed.setColor(user.displayHexColor === "#000000" ? "#ffffff" : user.displayHexColor)
-
-      //OTHER STUFF 
-      embed.setAuthor(user.user.tag, user.user.displayAvatarURL({ dynamic: true }))
-
-      //CHECK IF USER HAVE NICKNAME
-      if (user.nickname !== null) embed.addField("Nickname", user.nickname)
-      embed.addField("Joined At", moment(user.user.joinedAt).format("LLLL"))
-        .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
-        .addField("Common Information", `ID: \`${user.user.id}\`\nDiscriminator: ${user.user.discriminator}\nBot: ${user.user.bot}\nDeleted User: ${user.deleted}`)
-        .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
-        .setFooter(user.user.presence.status, stat[user.user.presence.status])
-
-
-
-      return message.channel.send(embed).catch(err => {
-        return message.channel.send("Error : " + err)
-      })
-
-
-
+    if(message.member.hasPermission("MANAGE_WEBHOOKS")){
+        permissions.push("Manage Webhooks");
     }
 
+    if(message.member.hasPermission("MANAGE_EMOJIS")){
+        permissions.push("Manage Emojis");
+    }
 
+    if(permissions.length == 0){
+        permissions.push("No Key Permissions Found");
+    }
 
-  }
+    if(member.user.id == message.guild.ownerID){
+        acknowledgements = 'Server Owner';
+    }
+
+    const embed = new Discord.MessageEmbed()
+        .setDescription(`<@${member.user.id}>`)
+        .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+        .setColor(randomColor)
+        .setFooter(`ID: ${message.author.id}`)
+        .setThumbnail(member.user.displayAvatarURL)
+        .setTimestamp()
+        .addField(`Status`,`${status[member.user.presence.status]}`, true)
+        .addField(`Masuk Pada Tanggal :`,`${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
+        .addField(`Akun Dibuat Pada Tanggal :`,`${moment(message.author.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
+        .addField(`Roles [${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).length}]`,`${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id }>`).join(" **|** ") || "No Roles"}`, true)
+        .addField("Acknowledgements: ", `${acknowledgements}`, true);
+        
+    message.channel.send({embed});
+
+}
+}
