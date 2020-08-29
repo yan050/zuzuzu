@@ -12,7 +12,7 @@ module.exports = {
       return message.channel.send("Please Give the Suggestion")
     }
     
-    let channel = message.guild.channels.cache.find((x) => (x.name === "suggestion" || x.name === "suggestions"))
+    let channel = message.guild.channels.cache.find((x) => (x.name === "ʚ🍓꒱╰〃suggestion︰" || x.name === "ʚ🍓꒱╰〃suggestion︰"))
     
     
     if(!channel) {
@@ -21,7 +21,7 @@ module.exports = {
                                                     
     
     let embed = new MessageEmbed()
-    .setAuthor("SUGGESTION: " + message.author.tag, message.author.avatarURL())
+    .setAuthor("Suggestion Baru : " + message.author.tag, message.author.avatarURL())
     .setThumbnail(message.author.avatarURL())
     .setColor("#ff2050")
     .setDescription(args.join(" "))
